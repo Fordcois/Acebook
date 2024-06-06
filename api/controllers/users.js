@@ -1,6 +1,7 @@
 const { json } = require("express");
 const User = require("../models/user");
 const TokenGenerator = require("../lib/token_generator");
+const bcrypt = require("bcrypt");
 
 const UsersController = {
 
@@ -11,8 +12,18 @@ const UsersController = {
     },
 
   // CREATE NEW USER -- DOES NOT CHECK TOKEN ===========
-  Create: (req, res) => {
-    const user = new User(req.body);
+  Create: async (req, res) => {
+    const { firstName, lastName,email, password } = req.body;
+    const salt = bcrypt.genSaltSync(10);
+    const UserAlreadyExists = await User.findOne({ email }).collation({ locale: 'en', strength: 2 });
+    if (UserAlreadyExists) {return res.status(400).json({message: 'Email is already in use'})}
+
+    const user = new User({
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      password: bcrypt.hashSync(password, salt)
+  });
 
     user.save((err) => {
       if (err) {
