@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import getSessionUserID from '../utility/getSessionUserID';
 import styles from './CommentWrite.module.css'
 import useFetchUserDataByID from '../utility/getselectuserinfo';
+import baseUrl from '../utility/baseURL';
 
 
 const NewCommentForm = ({ currentPost }) => {
@@ -13,7 +14,7 @@ const NewCommentForm = ({ currentPost }) => {
     if (token) {
       event.preventDefault();
       
-      fetch('/comments', {
+      fetch(`${baseUrl}/comments`, {
         method: 'post',
         headers: {
           'Content-Type': 'application/json',
@@ -33,7 +34,7 @@ const NewCommentForm = ({ currentPost }) => {
         if (response.status === 201) {
           console.log('Successful POST request');
           // Return the fetch promise for chaining
-          return fetch(`/posts/${currentPost._id}/comment`, {
+          return fetch(`${baseUrl}/posts/${currentPost._id}/comment`, {
             method: 'put',
             headers: {
               'Content-Type': 'application/json',

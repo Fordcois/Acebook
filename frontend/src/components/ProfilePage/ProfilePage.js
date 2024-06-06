@@ -7,6 +7,7 @@ import CustomFeed from '../feed/customFeed';
 import UpdateProfilePopUp from './UpdateProfilePopUp';
 import LoginPopup from "../auth/LoginPopup";
 import useTokenValidityCheck from '../loggedin/useTokenValidityCheck';
+import baseUrl from '../utility/baseURL';
 
 
 const ProfilePage = ({navigate}) =>{
@@ -51,7 +52,7 @@ const ProfilePage = ({navigate}) =>{
       // get the userID
       setMyId(id)
       console.log(id)
-      fetch(`/userData/${id}`, {
+      fetch(`${baseUrl}/userData/${id}`, {
         headers: {
           'Authorization': `Bearer ${token}`, 
         }

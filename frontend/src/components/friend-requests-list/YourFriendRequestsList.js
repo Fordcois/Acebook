@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import YourSingleFriendRequest from "./YourSingleFriendRequest";
 import useFetchUserDataByID from "../utility/getselectuserinfo";
 import getSessionUserID from '../utility/getSessionUserID';
+import baseUrl from "../utility/baseURL";
 import './YourFriendRequestsList.css'
 
 
@@ -20,7 +21,7 @@ const YourFriendRequestsList = () => {
     // =========== GET ALL OF YOUR FRIENDS WHEN THE COMPONENT MOUNTS =========================
     useEffect(() => {
         if (token) {
-            fetch(`/userData/${sessionUserID}`, {
+            fetch(`${baseUrl}/userData/${sessionUserID}`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },

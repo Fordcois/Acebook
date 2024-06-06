@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import baseUrl from '../utility/baseURL';
 import Post from '../post/Post'
 
 // Feed Page
@@ -14,7 +15,7 @@ const CustomFeed = (props) => {
     // Checking if token exists (aka user is logged in)
     if (token) {
       // Sends GET request to '/posts' with the auth token
-      fetch("/posts", {
+      fetch(`${baseUrl}/posts`, {
         headers: {
           'Authorization': `Bearer ${token}` // <======= BODY OF REQUEST
           //Use for all GET requests that require login

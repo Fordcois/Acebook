@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import baseUrl from './baseURL';
 
 const useFetchUserDataByID = (userID) => {
   const [token, setToken] = useState(window.localStorage.getItem('token'));
@@ -6,7 +7,7 @@ const useFetchUserDataByID = (userID) => {
 
   useEffect(() => {
     if (token && userID) {
-      fetch(`/userData/${userID}`, {
+      fetch(`${baseUrl}/userData/${userID}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

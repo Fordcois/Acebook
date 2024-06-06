@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import getSessionUserID from "../utility/getSessionUserID";
+import baseUrl from "../utility/baseURL";
 
 
 const UnfriendButton = ({user}) => {
@@ -14,7 +15,7 @@ const UnfriendButton = ({user}) => {
     const handleUnfriend = async (event) => {
         if (token) {
             event.preventDefault();
-            let unfriendEndpoint = `/userData/friends/${otherUser._id}/unfriend`
+            let unfriendEndpoint = `${baseUrl}/userData/friends/${otherUser._id}/unfriend`
 
             fetch(unfriendEndpoint, {
                 method: 'put',

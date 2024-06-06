@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import getSessionUserID from "../utility/getSessionUserID";
+import baseUrl from "../utility/baseURL";
 
 const FriendRequestAcceptOrDenyButtons = ({user}) => {
 
@@ -20,7 +21,7 @@ const FriendRequestAcceptOrDenyButtons = ({user}) => {
     const handleAcceptRequest = async (event) => {
         if (token) {
             event.preventDefault();
-            let acceptRequestEndpoint = `/userData/friend_requests/${user._id}/accept`
+            let acceptRequestEndpoint = `${baseUrl}/userData/friend_requests/${user._id}/accept`
 
             fetch(acceptRequestEndpoint, {
                 method: 'put',
@@ -52,7 +53,7 @@ const FriendRequestAcceptOrDenyButtons = ({user}) => {
     const handleDenyRequest = async (event) => {
         if (token) {
             event.preventDefault();
-            let denyRequestEndpoint = `/userData/friend_requests/${user._id}/deny`
+            let denyRequestEndpoint = `${baseUrl}/userData/friend_requests/${user._id}/deny`
 
             fetch(denyRequestEndpoint, {
                 method: 'put',

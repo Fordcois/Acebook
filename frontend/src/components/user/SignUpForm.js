@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styles from './SignUpForm.module.css';
+import baseUrl from '../utility/baseURL';
 
 // Signup Page
 const SignUpForm = ({ navigate, onSignupSuccess }) => {
@@ -16,7 +17,7 @@ const SignUpForm = ({ navigate, onSignupSuccess }) => {
   const handleSubmit = async (event) => {
     event.preventDefault(); 
     // Send POST request to '/users' endpoint
-    fetch( '/users', {
+    fetch( `${baseUrl}/users`, {
       method: 'post',
       headers: {
         'Content-Type': 'application/json',

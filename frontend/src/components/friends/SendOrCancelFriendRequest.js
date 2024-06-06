@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import getSessionUserID from '../utility/getSessionUserID';
+import baseUrl from '../utility/baseURL';
 
 const FriendRequestButton = ({ user }) => {
 
@@ -24,7 +25,7 @@ const FriendRequestButton = ({ user }) => {
         event.preventDefault();
 
         // Step 1: PUT request for the session user to be added to this user's requests
-        let putEndpoint = `/userData/${targetUser._id}/requests/`
+        let putEndpoint = `${baseUrl}/userData/${targetUser._id}/requests/`
         if (friendRequested){
             putEndpoint += 'unsend' //UsersController.UnsendFriendRequest if session user has already sent a friend request to the profile owner
         } else {
@@ -46,7 +47,7 @@ const FriendRequestButton = ({ user }) => {
             setToken(window.localStorage.getItem("token"));
 
             // Step 2: Perform the GET request to fetch the updated post
-            return fetch(`/userData/${targetUser._id}`, {
+            return fetch(`${baseUrl}/userData/${targetUser._id}`, {
             method: 'get',
             headers: {
                 'Content-Type': 'application/json',

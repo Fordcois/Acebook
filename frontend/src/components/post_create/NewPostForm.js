@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styles from './newPostForm.module.css';
 import getSessionUserID from '../utility/getSessionUserID';
 import useFetchUserDataByID from '../utility/getselectuserinfo';
+import baseUrl from '../utility/baseURL';
 
 const NewPostForm = ({ navigate }) => {
     const [selectedFile, setSelectedFile] = useState(null);
@@ -25,7 +26,7 @@ const NewPostForm = ({ navigate }) => {
         };
 
         try {
-            const response = await fetch('/posts', {
+            const response = await fetch(`${baseUrl}/posts`, {
                 method: 'post',
                 headers: {
                     'Content-Type': 'application/json',
@@ -61,7 +62,7 @@ const NewPostForm = ({ navigate }) => {
             formData.append('image', selectedFile);
 
             try {
-                const response = await fetch('/upload_image', {
+                const response = await fetch(`${baseUrl}/upload_image`, {
                     method: 'POST',
                     body: formData,
                     headers: { 'Authorization': `Bearer ${token}` },

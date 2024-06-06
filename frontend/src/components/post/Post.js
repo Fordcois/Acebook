@@ -11,6 +11,7 @@ import NewCommentForm from '../CommentWrite/CommentWrite';
 import WhoLikedThisList from '../wholikedthis/whoLikedThisList';
 import { BiLike, BiSolidLike, BiCommentAdd, BiSolidCommentAdd,  BiCommentDetail, BiSolidCommentDetail} from "react-icons/bi";
 import TrendingCalculator from '../utility/Trending';
+import baseUrl from '../utility/baseURL';
 
 const Post = ({ post }) => {
 
@@ -30,7 +31,7 @@ const Post = ({ post }) => {
       event.preventDefault();
 
       // Step 1: PUT request for the session user to Like/Unlike the post
-      fetch(`/posts/${post._id}`, {
+      fetch(`${baseUrl}/posts/${post._id}`, {
         method: 'put',
         headers: {
           'Content-Type': 'application/json',
@@ -45,7 +46,7 @@ const Post = ({ post }) => {
           setToken(window.localStorage.getItem("token"));
 
           // Step 2: Perform the GET request to fetch the updated post
-          return fetch(`/posts/${post._id}`, {
+          return fetch(`${baseUrl}/posts/${post._id}`, {
             method: 'get',
             headers: {
               'Content-Type': 'application/json',

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import baseUrl from '../utility/baseURL';
 import './UploadImage.css';
 
 const UploadImage = ({ onImageUpload }) => {
@@ -20,7 +21,7 @@ const UploadImage = ({ onImageUpload }) => {
         formData.append('image', selectedFile);
 
         try {
-            const response = await fetch('/upload_image', {
+            const response = await fetch(`${baseUrl}/upload_image`, {
                 method: 'POST',
                 body: formData,
             });

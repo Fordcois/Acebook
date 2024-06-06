@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import baseUrl from '../utility/baseURL';
 
 const parseJwt = (token) => {
   try {
@@ -50,7 +51,7 @@ const Countdown = () => {
       // Checking if token exists (aka user is logged in)
       if (token) {
         // Sends GET request to validate the token by fetching posts
-        const response = await fetch("/posts", {
+        const response = await fetch(`${baseUrl}/posts`, {
           headers: {
             'Authorization': `Bearer ${token}`
           }

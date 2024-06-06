@@ -11,6 +11,7 @@ import FriendRequestButton from '../friends/SendOrCancelFriendRequest';
 import useFetchUserDataByID from '../utility/getselectuserinfo';
 import FriendRequestAcceptOrDenyButtons from '../friends/AcceptOrDenyFriendRequest';
 import UnfriendButton from '../friends/UnfriendButton';
+import baseUrl from '../utility/baseURL';
 
 import { TbFriends, TbFriendsOff } from "react-icons/tb";
 
@@ -54,7 +55,7 @@ const SignedOutUserPage = ({navigate}) => {
       }
     
       // This ensures the user's ID is fetched dynamically from the URL
-      fetch(`/userData/${userId}`, {
+      fetch(`${baseUrl}/userData/${userId}`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }

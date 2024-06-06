@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './SearchBar.css'; 
+import baseUrl from '../utility/baseURL';
 import {FaSearch} from "react-icons/fa"
 
 const SearchBar = ({setResults}) => {
@@ -16,7 +17,7 @@ const SearchBar = ({setResults}) => {
     // =========== GET ALL USERS AS CLIENT TYPES INTO SEARCH BAR =========================
     const fetchData = (value) => {
       // Sends GET request to '/users' with the auth token
-      fetch("/userData", {
+      fetch(`${baseUrl}/userData`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }})

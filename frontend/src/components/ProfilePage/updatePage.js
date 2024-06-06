@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styles from './ProfilePage.css';
+import baseUrl from '../utility/baseURL';
 
 const UpdatePage = ({user}) => {
   const [bio, setBio] = useState('');
@@ -25,7 +26,7 @@ const UpdatePage = ({user}) => {
 
     if (token) {
       // Makes a PUT request to update user data
-      fetch('/userData', {
+      fetch(`${baseUrl}/userData`, {
         method: 'put',
         headers: {
           'Content-Type': 'application/json',
