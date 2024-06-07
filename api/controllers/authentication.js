@@ -13,7 +13,6 @@ const AuthenticationController = {
       if (!user) {
         return res.status(401).json({ message: "Email address not recognised" });
       }
-
       const PasswordMatch = await bcrypt.compare(password, user.password);
     
       if (!PasswordMatch) {

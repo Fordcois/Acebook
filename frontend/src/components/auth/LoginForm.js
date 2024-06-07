@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import styles from './LoginForm.module.css'
+import baseUrl from '../utility/baseURL';
 
 // Login Page
 const LogInForm = ({ navigate }) => {
@@ -15,7 +16,7 @@ const LogInForm = ({ navigate }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     // Send POST request to '/tokens' endpoint <== not sure where this is in our project
-    let response = await fetch( '/tokens', {
+    let response = await fetch( `${baseUrl}/tokens`, {
       method: 'post',
       headers: {
         'Content-Type': 'application/json',
