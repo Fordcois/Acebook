@@ -13,11 +13,6 @@ const Welcome = () => {
 const navigate = useNavigate();
 const [token, setToken] = useState(window.localStorage.getItem("token"));
 
-  useEffect(() => {
-    if (token) {
-      navigate('/timeline');
-    }
-  }, [token, navigate]);
 
   // === LOGIN POPUP =======
   const [isLoginPopupVisible, setIsLoginPopupVisible] = useState(false);

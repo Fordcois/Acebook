@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { FaUser } from "react-icons/fa";
 import baseUrl from './baseURL';
 
@@ -25,6 +26,7 @@ const ApiWakeup = () => {
     PingAPI();
   }, []);
 
+  
   return (
     <div>
       {serverStatus === null && (
