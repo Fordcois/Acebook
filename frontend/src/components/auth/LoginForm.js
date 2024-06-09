@@ -15,7 +15,6 @@ const LogInForm = ({ navigate }) => {
   // ============ FORM SUBMISSION FOR LOGIN ====================
   const handleSubmit = async (event) => {
     event.preventDefault();
-    // Send POST request to '/tokens' endpoint <== not sure where this is in our project
     let response = await fetch( `${baseUrl}/tokens`, {
       method: 'post',
       headers: {
@@ -29,10 +28,8 @@ const LogInForm = ({ navigate }) => {
       console.log("wrong password")
       setError("Wrong password, try again")
     } else if (response.status !== 201) { // if error code is not 401 or 201, show server error
-      console.log("oop")
       setError("Server error, please try again later")
     } else { // login successful
-      console.log("yay")
       let data = await response.json()
       window.localStorage.setItem("token", data.token)
       

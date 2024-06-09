@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Post from '../post/Post'
 import TrendingCalculator from '../utility/Trending';
+import baseUrl from '../utility/baseURL';
 import './Feed.css'
 
 // Feed Page
@@ -8,7 +9,7 @@ const Feed = ({ navigate }) => {
 
   // =========== STATE VARIABLES =========================
   const [posts, setPosts] = useState([]); //all posts
-  const [token, setToken] = useState(window.localStorage.getItem("token")); //similar to session id
+  const [token, setToken] = useState(window.localStorage.getItem("token"));
   const [displayPosts, setDisplayPosts] = useState([])
   const [trendingPosts, setTrendingPosts] = useState(null)
   const [sortByMethod, setSortByMethod] = useState("New (Default)")
@@ -19,7 +20,7 @@ const Feed = ({ navigate }) => {
     // Checking if token exists (aka user is logged in)
     if (token) {
       // Sends GET request to '/posts' with the auth token
-      fetch("/posts", {
+      fetch(`${baseUrl}/posts`, {
         headers: {
           'Authorization': `Bearer ${token}` 
         }

@@ -9,8 +9,14 @@ import HereFromMyPort from '../components/utility/HereFromMyPortfolio';
 
 
 const Welcome = ({ navigate }) => {
+const [token, setToken] = useState(window.localStorage.getItem("token"));
   // Fetch user-specific data based on userId and render content accordingly
   // Example: Fetch user details, posts, etc. using userId
+
+  // If Logged in naviate Away
+  if (token){
+    navigate('/timeline')
+  }
 
   // === LOGIN POPUP =======
   const [isLoginPopupVisible, setIsLoginPopupVisible] = useState(false);
