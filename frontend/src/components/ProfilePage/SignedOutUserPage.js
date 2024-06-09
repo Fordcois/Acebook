@@ -2,7 +2,6 @@ import React, { useState, useEffect, useSyncExternalStore } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import Navbar from '../navbar/navbar';
 import styles from './ProfilePage.css'
-import defaultProfilePic from './profilePic/defaultProfilePic.png'
 import CustomFeed from '../feed/customFeed';
 import LoginPopup from "../auth/LoginPopup";
 import useTokenValidityCheck from '../loggedin/useTokenValidityCheck';
@@ -65,12 +64,7 @@ const SignedOutUserPage = ({navigate}) => {
         window.localStorage.setItem("token", userData.token);
         setToken(window.localStorage.getItem("token"));
         console.log(userData.firstName)
-
-        // Set user data obtained from the API response to the state
         setUser(userData.user);
-
-        setProfilePicture(user.profilePictureURL) //TODO take out line, use .avatar
-
       })
       .catch(error => {
         console.error('Error fetching user data:', error);
@@ -92,14 +86,7 @@ const SignedOutUserPage = ({navigate}) => {
                 {/* PROFILE PICTURE */}
                 <div className="floatleft">
                   <div style={{ '--spacer-height': '60px' }} className="spacer"></div>
-  
-                  {/* TODO change to .avatar */}
-                  {/* <img className="profilepic" src={user.avatar}></img> */}
-                  {profilePicture ? (
-                      <img src={profilePicture} alt="Profile" className='profilepic' />
-                    ) : (
-                      <img src={`https://picsum.photos/seed/${userId}/300`} alt="Profile" className='profilepic'/>
-                    )}
+                      <img src={user.avatar} alt="Profile" className='profilepic' />
                 </div>
 
 

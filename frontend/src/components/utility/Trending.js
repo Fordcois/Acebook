@@ -1,7 +1,6 @@
 
 class TrendingCalculator {
   constructor() {
-    // was messing around whith these numbers, feel free to change them, its a bit tricky for me to figure out if any of this works!
 
     this.newPostWeight = 0.1 // gives new posts a flat head start if you make this the same as the trending threshold, posts will trend for 1 min
     this.trendingTreshold = 0.1 // the treshold for something to be trending the higher it is the harder it is to trend

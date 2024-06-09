@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Post from '../post/Post'
 import TrendingCalculator from '../utility/Trending';
 import baseUrl from '../utility/baseURL';
+
 import './Feed.css'
 
 // Feed Page

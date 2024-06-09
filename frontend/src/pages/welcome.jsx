@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/navbar/navbar';
 import SignUpForm from '../components/user/SignUpForm';
 import SignupSuccessPopup from '../components/user/SuccessfullySignedUpPopup';
@@ -8,15 +9,15 @@ import ApiWakeup from '../components/utility/API_Wakeup';
 import HereFromMyPort from '../components/utility/HereFromMyPortfolio';
 
 
-const Welcome = ({ navigate }) => {
+const Welcome = () => {
+const navigate = useNavigate();
 const [token, setToken] = useState(window.localStorage.getItem("token"));
-  // Fetch user-specific data based on userId and render content accordingly
-  // Example: Fetch user details, posts, etc. using userId
 
-  // If Logged in naviate Away
-  if (token){
-    navigate('/timeline')
-  }
+  useEffect(() => {
+    if (token) {
+      navigate('/timeline');
+    }
+  }, [token, navigate]);
 
   // === LOGIN POPUP =======
   const [isLoginPopupVisible, setIsLoginPopupVisible] = useState(false);

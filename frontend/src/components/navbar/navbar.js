@@ -22,9 +22,7 @@ const Navbar = () => {
   const friendRequests = FoundUser && FoundUser.requests.length ? true: false;
   const AuthorFirstName = FoundUser && FoundUser.firstName ? FoundUser.firstName : '';
   const AuthorLastName = FoundUser && FoundUser.lastName ? FoundUser.lastName : '';
-  // const AuthorProfilePic = FoundUser && FoundUser.avatar ? FoundUser.avatar : '';
-  // TODO change back to .avatar above
-  const AuthorProfilePic = FoundUser && FoundUser.profilePictureURL ? FoundUser.profilePictureURL : '';
+  const AuthorProfilePic = FoundUser && FoundUser.avatar ? FoundUser.avatar : '';
 
 
   // SEARCH BAR:
@@ -36,14 +34,8 @@ const Navbar = () => {
           <div className="topnav">
             <a href='/timeline' className='image'> <img src={logo}alt="Logo" /></a>
             
-            {/* TODO change to .avatar */}
-            {/* <a href='/profile' className='smallcirclemasknav'> <img src={AuthorProfilePic}alt="Logo" /></a> */}
             <a href='/profile'>
-            {AuthorProfilePic ? (
-                <img src={AuthorProfilePic} alt="Profile" className='smallcirclemasknav' />
-              ) : (
-                <img src={`https://picsum.photos/seed/${sessionUserID}/300`} alt="Profile" className='smallcirclemasknav'/>
-              )}
+              <img src={AuthorProfilePic} alt="Profile" className='smallcirclemasknav' />   
             </a>
 
             <a href='/profile' className='navbarname'> {AuthorFirstName} {AuthorLastName}</a>
@@ -66,7 +58,7 @@ const Navbar = () => {
       );
     } else {
       return (
-        <div class="topnav">
+        <div className="topnav">
           <a href='/timeline' className='image'> <img src={logo}alt="Logo" /></a>
 
             <SearchBar setResults={setResults}/>

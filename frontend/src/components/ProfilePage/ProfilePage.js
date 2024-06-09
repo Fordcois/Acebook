@@ -60,13 +60,8 @@ const ProfilePage = ({navigate}) =>{
       // modified version of the feed code 
         .then((res) => res.json())
         .then( async data => {
-          // the data returned is the user data and authetication token
-
-          // the token is stored in the window
           window.localStorage.setItem("token", data.token);
           setToken(window.localStorage.getItem("token"));
-          // and the user data is stored in the state 
-          // you can access specific types of data using userData.atribute eg userData.email
           setUserData(data.user);
           setProfilePicture(userData.profilePictureURL)
 
@@ -97,14 +92,7 @@ const ProfilePage = ({navigate}) =>{
               {/* PROFILE PICTURE */}
               <div className="floatleft">
               <div style={{ '--spacer-height': '60px' }} className="spacer"></div>
-
-              {/* TODO change to .avatar */}
-              {/* <img className="profilepic" src={userData.avatar}></img> */}
-              {profilePicture ? (
-                <img src={profilePicture} alt="Profile" className='profilepic' />
-              ) : (
-                <img src={`https://picsum.photos/seed/${userData._id}/300`} alt="Profile" className='profilepic'/>
-              )}
+                <img src={userData.avatar} alt="Profile" className='profilepic' />
             </div>
 
 

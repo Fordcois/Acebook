@@ -86,17 +86,6 @@ const Post = ({ post }) => {
   const num_comments = formatNumComments(post.comments)
 
 
-  // -------- SET PROFILE PICTURE ------------  
-  const fillerImage = `https://picsum.photos/seed/${post.user_id._id}/300` // 'real' profile pictures
-
-  // TODO: Comment these out once .avatar is integrated
-  let profilePicture = post.user_id.profilePictureURL; // TODO change to .avatar
-  if (profilePicture === null || "" || undefined){
-    profilePicture = fillerImage;
-  }
-
-
-
   // ======= SHOW COMMENTS BUTTON ===============
   const [showComments, setShowComments] = useState(false);
 
@@ -135,9 +124,8 @@ const Post = ({ post }) => {
         <div class="circle-container">
         <a href={`/users/${post.user_id._id}`}>
 
-          {/* TODO change to .avatar */}
-              {/* <img src={post.user_id.avatar} alt="Image Alt Text"/> */}
-          <img src={profilePicture} alt="Image Alt Text"/>
+
+          <img src={post.user_id.avatar} alt="Image Alt Text"/>
 
         </a>
         </div>{isThisPostTrending && (
